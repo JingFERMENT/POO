@@ -16,9 +16,9 @@ echo $newDate->format('Y-m-d').PHP_EOL; // outputs 2024-07-02
 // 1) Objects cannot be modified after creation; any modification returns a new object.
 // 2) Ideal for contexts requiring immutability, ensuring the original date and time remain unchanged.
 
-$date = new DateTimeImmutable;
-$newDate = $date->modify('+1 day');
+// $date = new DateTimeImmutable;
+// $newDate = $date->modify('+1 day');
  
-echo $date->format('d/m/Y').PHP_EOL;
-echo $newDate->format('d/m/Y').PHP_EOL;
+// echo $date->format('d/m/Y').PHP_EOL;
+// echo $newDate->format('d/m/Y').PHP_EOL;
 
