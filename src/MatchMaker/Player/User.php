@@ -17,4 +17,20 @@ abstract class User
     abstract protected function probabilityAgainst(self $player): float;
 
     abstract public function updateRatioAgainst(self $player, int $result): void;
+ }
+
+// A trait is a mechanism for code reuse in single inheritance languages like PHP. 
+// Traits allow you to group methods and properties that you can then include in multiple classes.
+
+ trait UserAware {
+    protected User $author;
+   
+    public function getAuthor() {
+        return $this->author;
+    }   
+   
+    public function setAuthor(User $author) {
+        $this->author = $author;
+    }
 }
+
