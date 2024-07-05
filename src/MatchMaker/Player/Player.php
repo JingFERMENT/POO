@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\MatchMaker\Player;
 
 class Player extends User implements PlayerInterface
-{    
+{
     public function getName(): string
     {
         return $this->name;
