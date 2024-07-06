@@ -1,25 +1,45 @@
 <?php
+
+declare(strict_types=1);
+
 // Enregistre une fonction d'auto-chargement des classes
-spl_autoload_register(static function(string $fqcn) {
+spl_autoload_register(static function(string $fqcn):void {
     // $fqcn contient le nom complet de la classe, par exemple "App\MatchMaker\Lobby"
 
     // Remplacez le namespace 'App' par 'src' et les backslashes par des slashes
-   $path = str_replace(['App','\\'], ['src','/'], $fqcn).'.php';
+   $path = sprintf('%s.php',str_replace(['App','\\'], ['src','/'], $fqcn));
    
    // Chargez le fichier PHP correspondant// puis chargeons le fichier
    require_once ($path);
 });
 
 // Importation des classes avec le mot-clé use
+use App\MatchMaker\Encounter\Score;
 use App\MatchMaker\Lobby;
 use App\MatchMaker\Player\Player;
 
 $greg = new Player('greg');
-$jade = new Player('jade');
+$chuckNorris = new Player('Chuck Norris', 3000);
 
 $lobby = new Lobby();
-$lobby->addPlayers($greg, $jade);
+$lobby->addPlayer($greg);
+$lobby->addPlayer($chuckNorris);
 
-var_dump($lobby->findOpponents($lobby->queuingPlayers[0]));
+while (count($lobby->queuingPlayers)) {
+    $lobby->createEncounters();
+}
 
-exit(0);
+$encounter = end($lobby->encounters);
+
+// ces scores sont fictifs !
+$encounter->setScores(
+    new Score(score: 42, player: $greg),
+    new Score(score: 1, player: $chuckNorris)
+);
+
+var_dump($encounter);
+
+$encounter->updateRatios();
+
+var_dump($greg);
+var_dump($chuckNorris);
