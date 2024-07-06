@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\MatchMaker\Encounter;
+namespace App\Encounter;
 
-use App\MatchMaker\Player\PlayerInterface;
+use App\Player\PlayerInterface;
 
 class Score
 {

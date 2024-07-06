@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\MatchMaker;
+namespace App;
 
-use App\MatchMaker\Player\PlayerInterface;
-use App\MatchMaker\Player\InLobbyPlayerInterface;
-use App\MatchMaker\Player\QueuingPlayer;
+use App\Player\PlayerInterface;
+use App\Player\InLobbyPlayerInterface;
+use App\Player\QueuingPlayer;
 
 interface LobbyInterface
 {

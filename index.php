@@ -14,9 +14,9 @@ spl_autoload_register(static function(string $fqcn):void {
 });
 
 // Importation des classes avec le mot-clé use
-use App\MatchMaker\Encounter\Score;
-use App\MatchMaker\Lobby;
-use App\MatchMaker\Player\Player;
+use App\Encounter\Score;
+use App\Lobby;
+use App\Player\Player;
 
 $greg = new Player('greg');
 $chuckNorris = new Player('Chuck Norris', 3000);

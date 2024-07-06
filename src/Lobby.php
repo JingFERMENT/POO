@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\MatchMaker;
+namespace App;
 
-use App\MatchMaker\Encounter\Encounter;
-use App\MatchMaker\Player\InLobbyPlayerInterface;
-use App\MatchMaker\Player\PlayerInterface;
-use App\MatchMaker\Player\QueuingPlayer;
+use App\Encounter\Encounter;
+use App\Player\InLobbyPlayerInterface;
+use App\Player\PlayerInterface;
+use App\Player\QueuingPlayer;
 
 class Lobby implements LobbyInterface
 {
