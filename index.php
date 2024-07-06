@@ -15,19 +15,27 @@ spl_autoload_register(static function(string $fqcn):void {
 
 // Importation des classes avec le mot-clé use
 use App\Encounter\Score;
+use App\Exceptions\InsufficientPlayersException;
 use App\Lobby;
 use App\Player\Player;
 
 $greg = new Player('greg');
 $chuckNorris = new Player('Chuck Norris', 3000);
 
-$lobby = new Lobby();
-$lobby->addPlayer($greg);
-$lobby->addPlayer($chuckNorris);
+try {
+    $lobby = new Lobby();
+    $lobby->addPlayer($greg);
+    $lobby->addPlayer($chuckNorris);
 
-while (count($lobby->queuingPlayers)) {
-    $lobby->createEncounters();
+    while (count($lobby->queuingPlayers)) {
+        $lobby->createEncounters();
+    }
+} catch (InsufficientPlayersException $errormsg) {
+    echo 'Erreur: ' . $e->getMessage();
+} catch (\Exception $e) {
+    echo 'Une erreur inattendu est survenue: ' . $errormsg->getMessage();
 }
+
 
 $encounter = end($lobby->encounters);
 
